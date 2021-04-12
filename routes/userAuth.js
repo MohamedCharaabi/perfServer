@@ -74,8 +74,17 @@ router.post('/login', async (req, res) => {
 
 
 router.get('/user', async (req, res) => {
+
+
+    const cookie = req.cookies['jwt'];
+
+    if (!cookie) {
+        return res.status(401).send({ message: 'Unauthenticated' })
+
+    }
+
     try {
-        const cookie = req.cookies['jwt'];
+
 
         const claims = jwt.verify(cookie, 'secret');
 
@@ -90,7 +99,7 @@ router.get('/user', async (req, res) => {
     } catch (error) {
         return res.status(401).send({ message: 'error => ' + error.message })
 
-    } s
+    }
 })
 
 
@@ -102,6 +111,7 @@ router.post('/logout', async (req, res) => {
 
     try {
         res.cookie('jwt', { maxAge: 0, }); //remove the cookie by setting the age to 0
+
         res.send({ message: ' log out success' })
     } catch (error) {
         res.sent({ erroer: error })
