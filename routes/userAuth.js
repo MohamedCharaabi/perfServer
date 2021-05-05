@@ -103,21 +103,34 @@ router.get('/user', async (req, res) => {
 })
 
 
-router.post('/logout', async (req, res) => {
-
-    res.header("Access-Control-Allow-Headers", "*");
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-
+router.get('/logout', async (req, res) => {
     try {
-        res.cookie('jwt', { maxAge: 0, }); //remove the cookie by setting the age to 0
-
-        res.send({ message: ' log out success' })
+        res.cookie('jwt', '', { maxAge: 0 });
+        // res.redirect('/signin');
+        res.send({ message: 'logout seccess' })
     } catch (error) {
-        res.sent({ erroer: error })
-    }
+        res.send({ message: 'logout failed' })
 
+    }
 })
+
+
+
+// router.post('/logout', async (req, res) => {
+
+//     res.header("Access-Control-Allow-Headers", "*");
+//     res.header('Access-Control-Allow-Credentials', true);
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+
+//     try {
+//         res.cookie('jwt', { maxAge: 0, }); //remove the cookie by setting the age to 0
+
+//         res.send({ message: ' log out success' })
+//     } catch (error) {
+//         res.sent({ erroer: error })
+//     }
+
+// })
 
 
 export default router;
