@@ -6,7 +6,10 @@ export const themeSchema = new mongoose.Schema({
     name: String,
     days: Number,
     formers: [
-        formerSchema
+        {
+            type: String,
+            ref: 'Former'
+        }
     ],
 });
 
