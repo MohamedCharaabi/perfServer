@@ -8,7 +8,7 @@ const participantSchema = new mongoose.Schema({
     proffesion: String,
     phone: Number,
     establishment: String,
-    theme: String,
+    theme: themeSchema,
 });
 
 
