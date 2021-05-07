@@ -8,7 +8,10 @@ const participantSchema = new mongoose.Schema({
     proffesion: String,
     phone: Number,
     establishment: String,
-    theme: themeSchema,
+    theme: {
+        ref: 'Theme',
+        type: String
+    },
 });
 
 
