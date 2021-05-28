@@ -9,6 +9,7 @@ import themeRoutes from './routes/themes.js';
 import participantRoutes from './routes/participants.js'
 import sessionRoutes from './routes/sessions.js'
 import authRoutes from './routes/userAuth.js';
+import statRoutes from './routes/statistic.js';
 import cookieParser from 'cookie-parser'
 
 
@@ -28,6 +29,7 @@ app.use('/theme', themeRoutes);
 app.use('/participant', participantRoutes);
 app.use('/session', sessionRoutes);
 app.use('/auth', authRoutes);
+app.use('/stat', statRoutes);
 
 
 
